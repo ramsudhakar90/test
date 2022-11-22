@@ -1,0 +1,27 @@
+name: SonarScan
+
+on:
+  push:
+    branches: master
+
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+       
+      - name: Testing a failed Condition
+        run: |
+            echo "Testing"
+      
+      - name: Google Chat Notification
+        uses: Co-qn/google-chat-notification@releases/v1
+        with:
+          name: ${{ github.workflow }}
+          url: ${{ secrets.GCHAT_TEST_WEBHOOK }}
+          status: ${{ job.status }}
+        if: ${{ failure() }}
