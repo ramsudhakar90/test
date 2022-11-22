@@ -16,7 +16,7 @@ jobs:
        
       - name: Testing a failed Condition
         run: |
-            echo "Testing"
+            eclho "Testing"
       
       - name: Google Chat Notification
         uses: Co-qn/google-chat-notification@releases/v1
